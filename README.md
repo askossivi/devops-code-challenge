@@ -97,7 +97,8 @@ https://docs.docker.com/desktop/install/mac-install/
 
 # Dockerize both fronend and backend 
 
-- To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder, then I built and pushed a docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
+# Dockerize Backend
+To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder, then I built and pushed a docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
 
 
     cd backend
@@ -113,7 +114,8 @@ https://docs.docker.com/desktop/install/mac-install/
     docker push devtraining/server-backend:v1.0.0
 
 
-- To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, then I built and pushed a docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
+# Dockerize Frontend
+ To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, then I built and pushed a docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
 
 
     cd frontend
