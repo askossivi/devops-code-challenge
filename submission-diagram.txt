@@ -1,0 +1,65 @@
+The main folder structure:
+
+├───frondend
+│   │   Dockerfile
+│   │   package-lock.json
+│   │   package.json
+│   │   .gitignore
+│   │
+│   ├───public
+│   │       index.html
+│   │       robots.txt
+│   |
+│   └───src
+│           App.css
+│           App.js
+│           config.js
+│           index.css
+│           index.js
+│
+└───backend
+│      config.js
+│      Dockerfile
+│      index.js
+│      package-lock.json
+│      package.json
+│
+│   
+│
+|
+├───infrastructure
+│   │   asg_policy.tf
+│   │   asg.tf
+│   │   data.sh
+│   │   elb.tf
+│   │   igw.tf
+│   │   key-pair.tf
+│   │   launch_config.tf
+│   │   outputs.tf
+│   │   provider.tf
+│   │   README.md
+│   │   route_table.tf
+│   │   sg_ec2.tf
+│   │   sg_elb.tf
+│   │   subnets.tf
+│   │   terraform.tf
+│   │   vars.tf
+│   │   vpc.tf
+│   │
+│   └───private-key
+│           terraform-key
+│           terraform.pub
+│          
+│
+├───Stae-backend
+│      dynamoDB.tf
+│      kms.tf
+│      s3-bucket.sh
+│      terraform.tf
+│      variable.tf
+│  
+│	
+│   .gitignore
+│   docker-compose.yml
+│   README.md
+│   submission-diagram.txt

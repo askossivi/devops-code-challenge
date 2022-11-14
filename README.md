@@ -60,75 +60,11 @@ This is not an exhaustive list of extra features that could be added to this cod
 
 
 
-#### SUBMISSION README FILE #########
-The main folder structure:
-
-├───frondend
-│   │   Dockerfile
-│   │   package-lock.json
-│   │   package.json
-│   │   .gitignore
-│   │
-│   ├───public
-│   │       index.html
-│   │       robots.txt
-│   |
-│   └───src
-│           App.css
-│           App.js
-│           config.js
-│           index.css
-│           index.js
-│
-└───backend
-│      config.js
-│      Dockerfile
-│      index.js
-│      package-lock.json
-│      package.json
-│
-│   
-│
-|
-├───infrastructure
-│   │   asg_policy.tf
-│   │   asg.tf
-│   │   data.sh
-│   │   elb.tf
-│   │   igw.tf
-│   │   key-pair.tf
-│   │   launch_config.tf
-│   │   outputs.tf
-│   │   provider.tf
-│   │   README.md
-│   │   route_table.tf
-│   │   sg_ec2.tf
-│   │   sg_elb.tf
-│   │   subnets.tf
-│   │   terraform.tf
-│   │   vars.tf
-│   │   vpc.tf
-│   │
-│   └───private-key
-│           terraform-key
-│           terraform.pub
-│          
-│
-├───Stae-backend
-│      dynamoDB.tf
-│      kms.tf
-│      s3-bucket.sh
-│      terraform.tf
-│      variable.tf
-│  
-│	
-│   .gitignore
-│   docker-compose.yml
-│   README.md
+#### SUBMISSION #########
 
 
 #  Basic Prerequisite:
-- AWS & Terraform
+- AWS free tier account
 - A workstation with Terraform installed
 - An AWS access key & secret key created 
 - Generated SSH key on the Local workstation using "ssh-keygen"
@@ -136,7 +72,7 @@ The main folder structure:
 
 
 
-A- The contairize frontend and backend was deployed in AWS free tier using terraform.
+# The contairized frontend and backend was deployed in AWS using terraform.
 1- To start, you need to have an aws account, it is free to create one if you don't have any yet. Follow this link below to create one:
    https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 
@@ -153,16 +89,51 @@ A- The contairize frontend and backend was deployed in AWS free tier using terra
 for mac install use this link below
 https://docs.docker.com/desktop/install/mac-install/
 
-A- Github repos that has been forked from the repo with all my codes.
+
+
+# Github repos that has been forked from the repo with all my codes.
     https://github.com/askossivi/devops-code-challenge
 
-2- Tools used in this code challende:
- a- AWS free tier
- b- Terraform (IaC)
- c- Docker (dokerized both fronend and backend)
+
+# Dockerize both fronend and backend 
+
+- To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder, then I built and pushed a docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
 
 
-B- There are two folders (State-backen/ and Infrastructure/) that contain terraform syntax.
+    cd backend
+    vi Dockerfile
+
+    FROM node:12.18.3   #base image
+    WORKDIR /app
+    COPY ["package.json", "package-lock.json", "./"]
+    RUN npm install --production
+    COPY . .
+    EXPOSE 8080
+    CMD ["node", "index.js"]
+
+    docker build -t devtraining/server-backend:v1.0.0 .
+    docker push devtraining/server-backend:v1.0.0
+
+
+- To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, then I built and pushed a docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
+
+
+    cd frontend
+    vi Dockerfile:
+
+    FROM node:12.18.3   #base image
+    WORKDIR /app
+    COPY ["package.json", "package-lock.json", "./"]
+    RUN npm install --production
+    RUN npx browserslist@latest --update-db
+    COPY . .
+    EXPOSE 3000
+    CMD ["npm", "start"]
+
+    docker build -t devtraining/client-frontend:v1.0.0 .
+    docker push devtraining/client-frontend:v1.0.0
+
+# There are two folders (State-backen/ and Infrastructure/) that contain terraform syntax.
 
 # Creating the State Locking resources from the folder "State-backend/"
 This folder contains terraform syatax when run will create an s3 bucket, a DynamoDB table for state locking used later in the Infrastructure folder to maintain the terraform.tfstate file concistency, and a KMS alias used for the s3  bucket server side encryption_configuration.
@@ -176,6 +147,7 @@ To deploy this, run:
 # Deploying the infrastruction from the folder "infrastruction/"
 Rinning this IaC systhax will deploy 17 resources in AWS including a free tier ec2 instance
 The README.md under infrastruction folder contains a list of resources deployed.
+
     cd infrastruction
     cat README.md
     terraform init
@@ -183,30 +155,10 @@ The README.md under infrastruction folder contains a list of resources deployed.
     terraform apply --auto-approve
 
 
+# Verify the deployed app
 
+Copy and paste the url in the browser: 
 
-
-# Dockerize both fronend and backend 
-
-- To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder, then I built and pushed a docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
-cd backend
-cat Dockerfile
-
-docker build -t devtraining/server-backend:v1.0.0 .
-docker push devtraining/server-backend:v1.0.0
-
-
-- To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, then I built and pushed a docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
-cd frontend
-cat Dockerfile
-
-docker build -t devtraining/client-frontend:v1.0.0 .
-docker push devtraining/client-frontend:v1.0.0
-
-
-# VERIFY THE WEB APP DEPLOY
-
-Copy and paste in the browser: 
 1- Frontend:
 - http://localhost:3000/  
 
