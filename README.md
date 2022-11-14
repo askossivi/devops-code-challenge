@@ -57,3 +57,162 @@ A few examples of extras for this coding challenge:
 4. Running the application in a serverless environment
 
 This is not an exhaustive list of extra features that could be added to this code challenge. At the end of the day, this section is for you to demonstrate any skills you want to show that’s not captured in the core requirement.
+
+
+
+#### SUBMISSION README FILE #########
+The main folder structure:
+
+├───frondend
+│   │   Dockerfile
+│   │   package-lock.json
+│   │   package.json
+│   │   .gitignore
+│   │
+│   ├───public
+│   │       index.html
+│   │       robots.txt
+│   |
+│   └───src
+│           App.css
+│           App.js
+│           config.js
+│           index.css
+│           index.js
+│
+└───backend
+│      config.js
+│      Dockerfile
+│      index.js
+│      package-lock.json
+│      package.json
+│
+│   
+│
+|
+├───infrastructure
+│   │   asg_policy.tf
+│   │   asg.tf
+│   │   data.sh
+│   │   elb.tf
+│   │   igw.tf
+│   │   key-pair.tf
+│   │   launch_config.tf
+│   │   outputs.tf
+│   │   provider.tf
+│   │   README.md
+│   │   route_table.tf
+│   │   sg_ec2.tf
+│   │   sg_elb.tf
+│   │   subnets.tf
+│   │   terraform.tf
+│   │   vars.tf
+│   │   vpc.tf
+│   │
+│   └───private-key
+│           terraform-key
+│           terraform.pub
+│          
+│
+├───Stae-backend
+│      dynamoDB.tf
+│      kms.tf
+│      s3-bucket.sh
+│      terraform.tf
+│      variable.tf
+│  
+│	
+│   .gitignore
+│   docker-compose.yml
+│   README.md
+
+
+#  Basic Prerequisite:
+- AWS & Terraform
+- A workstation with Terraform installed
+- An AWS access key & secret key created 
+- Generated SSH key on the Local workstation using "ssh-keygen"
+- A workstation with docker installed
+
+
+
+A- The contairize frontend and backend was deployed in AWS free tier using terraform.
+1- To start, you need to have an aws account, it is free to create one if you don't have any yet. Follow this link below to create one:
+   https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
+
+2- Install AWS CLI and Terraform on your local machine using the link below:
+   https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+   https://developer.hashicorp.com/terraform/downloads
+
+3- Generate and configure your AWS user profile credential:
+   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+
+4- Install docker on your local workstation - Windows
+   https://docs.docker.com/desktop/install/windows-install/
+
+for mac install use this link below
+https://docs.docker.com/desktop/install/mac-install/
+
+A- Github repos that has been forked from the repo with all my codes.
+    https://github.com/askossivi/devops-code-challenge
+
+2- Tools used in this code challende:
+ a- AWS free tier
+ b- Terraform (IaC)
+ c- Docker (dokerized both fronend and backend)
+
+
+B- There are two folders (State-backen/ and Infrastructure/) that contain terraform syntax.
+
+# Creating the State Locking resources from the folder "State-backend/"
+This folder contains terraform syatax when run will create an s3 bucket, a DynamoDB table for state locking used later in the Infrastructure folder to maintain the terraform.tfstate file concistency, and a KMS alias used for the s3  bucket server side encryption_configuration.
+To deploy this, run:
+
+    cd State-backend/
+    terraform init
+    terraform apply --auto-approve
+
+
+# Deploying the infrastruction from the folder "infrastruction/"
+Rinning this IaC systhax will deploy 17 resources in AWS including a free tier ec2 instance
+The README.md under infrastruction folder contains a list of resources deployed.
+    cd infrastruction
+    cat README.md
+    terraform init
+    terraform validate
+    terraform apply --auto-approve
+
+
+
+
+
+# Dockerize both fronend and backend 
+
+- To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder, then I built and pushed a docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
+cd backend
+cat Dockerfile
+
+docker build -t devtraining/server-backend:v1.0.0 .
+docker push devtraining/server-backend:v1.0.0
+
+
+- To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, then I built and pushed a docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
+cd frontend
+cat Dockerfile
+
+docker build -t devtraining/client-frontend:v1.0.0 .
+docker push devtraining/client-frontend:v1.0.0
+
+
+# VERIFY THE WEB APP DEPLOY
+
+Copy and paste in the browser: 
+1- Frontend:
+- http://localhost:3000/  
+
+2- Backend:
+- http://18.216.89.69:8080/
+
+
+
+
