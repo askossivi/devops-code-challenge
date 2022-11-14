@@ -147,6 +147,8 @@ To deploy this, run:
 
     cd State-backend/
     terraform init
+    terraform validate
+    terraform plan
     terraform apply --auto-approve
 
 
@@ -158,6 +160,7 @@ The README.md under infrastruction folder contains a list of resources deployed.
     cat README.md
     terraform init
     terraform validate
+    terraform plan
     terraform apply --auto-approve
 
 
