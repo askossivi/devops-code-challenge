@@ -98,12 +98,12 @@ https://docs.docker.com/desktop/install/mac-install/
 # Dockerize both fronend and backend 
 
 # Dockerize Backend
-To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder, then I built and pushed a docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
+To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder
 
 
     cd backend
     vi Dockerfile
-    
+
     FROM node:12.18.3   #base image
     WORKDIR /app
     COPY ["package.json", "package-lock.json", "./"]
@@ -112,13 +112,14 @@ To dockerize the backend, I created a Dockerfile with its different layers inclu
     EXPOSE 8080
     CMD ["node", "index.js"]
 
+Build and push the docker image tagged "devtraining/server-backend:v1.0.0" into a public docker hub registry called devtraining
+
     docker build -t devtraining/server-backend:v1.0.0 .
     docker push devtraining/server-backend:v1.0.0
 
 
 # Dockerize Frontend
- To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, then I built and pushed a docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
-
+ To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, 
 
     cd frontend
     vi Dockerfile:
@@ -132,10 +133,13 @@ To dockerize the backend, I created a Dockerfile with its different layers inclu
     EXPOSE 3000
     CMD ["npm", "start"]
 
+
+Build and pushed the docker image tagged "devtraining/client-frontend:v1.0.0" into a public docker hub registry called devtraining
+
     docker build -t devtraining/client-frontend:v1.0.0 .
     docker push devtraining/client-frontend:v1.0.0
 
-# There are two folders (State-backen/ and Infrastructure/) that contain terraform syntax.
+ There are two folders (State-backen/ and Infrastructure/) that contain terraform syntax.
 
 # Creating the State Locking resources from the folder "State-backend/"
 This folder contains terraform syatax when run will create an s3 bucket, a DynamoDB table for state locking used later in the Infrastructure folder to maintain the terraform.tfstate file concistency, and a KMS alias used for the s3  bucket server side encryption_configuration.
