@@ -102,7 +102,6 @@ https://docs.docker.com/desktop/install/mac-install/
 
     cd backend
     vi Dockerfile
-
     FROM node:12.18.3   #base image
     WORKDIR /app
     COPY ["package.json", "package-lock.json", "./"]
@@ -110,7 +109,6 @@ https://docs.docker.com/desktop/install/mac-install/
     COPY . .
     EXPOSE 8080
     CMD ["node", "index.js"]
-
     docker build -t devtraining/server-backend:v1.0.0 .
     docker push devtraining/server-backend:v1.0.0
 
@@ -120,7 +118,6 @@ https://docs.docker.com/desktop/install/mac-install/
 
     cd frontend
     vi Dockerfile:
-
     FROM node:12.18.3   #base image
     WORKDIR /app
     COPY ["package.json", "package-lock.json", "./"]
@@ -129,7 +126,6 @@ https://docs.docker.com/desktop/install/mac-install/
     COPY . .
     EXPOSE 3000
     CMD ["npm", "start"]
-
     docker build -t devtraining/client-frontend:v1.0.0 .
     docker push devtraining/client-frontend:v1.0.0
 
