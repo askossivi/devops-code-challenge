@@ -83,11 +83,11 @@ This is not an exhaustive list of extra features that could be added to this cod
 3- Generate and configure your AWS user profile credential:
    https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
 
-4- Install docker on your local workstation - Windows
+4- Install docker on your local workstation - Windows:
    https://docs.docker.com/desktop/install/windows-install/
 
-for mac install use this link below
-https://docs.docker.com/desktop/install/mac-install/
+for mac install use this link below:
+   https://docs.docker.com/desktop/install/mac-install/
 
 
 
