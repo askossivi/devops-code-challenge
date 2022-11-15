@@ -74,19 +74,24 @@ This is not an exhaustive list of extra features that could be added to this cod
 
 # The contairized frontend and backend was deployed in AWS using terraform.
 1- To start, you need to have an aws account, it is free to create one if you don't have any yet. Follow this link below to create one:
+
    https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 
 2- Install AWS CLI and Terraform on your local machine using the link below:
+
    https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
    https://developer.hashicorp.com/terraform/downloads
 
 3- Generate and configure your AWS user profile credential:
+
    https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
 
 4- Install docker on your local workstation - Windows:
+
    https://docs.docker.com/desktop/install/windows-install/
 
 for mac install use this link below:
+
    https://docs.docker.com/desktop/install/mac-install/
 
 
