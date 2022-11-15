@@ -174,9 +174,11 @@ Copy and paste the url in the browser:
 
 1- Frontend:
 - http://localhost:3000/  
+- curl -i http://localhost:3000/
 
 2- Backend:
 - http://18.216.89.69:8080/
+- curl -i http://18.216.89.69:8080/
 
 
 
