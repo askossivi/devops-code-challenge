@@ -172,12 +172,12 @@ The README.md under infrastruction folder contains a list of resources deployed.
 Copy and paste the url in the browser: 
 
 1- Frontend:
-- http://localhost:3000/  
-- curl -i http://localhost:3000/
+- http://assignment.kossiviautomation.net:3000/  
+- curl -i http://assignment.kossiviautomation.net:3000/
 
 2- Backend:
-- http://18.216.89.69:8080/
-- curl -i http://18.216.89.69:8080/
+- http://assignment.kossiviautomation.net:8080/
+- curl -i http://assignment.kossiviautomation.net:8080/
 
 
 
