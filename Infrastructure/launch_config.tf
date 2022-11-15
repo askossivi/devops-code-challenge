@@ -7,7 +7,7 @@ resource "aws_launch_configuration" "web" {
 
   security_groups = [ "${aws_security_group.demosg.id}" ]
   associate_public_ip_address = true
-  user_data = "${file("data.sh")}"
+  user_data = "${file("install.sh")}"
 
   lifecycle {
     create_before_destroy = true
