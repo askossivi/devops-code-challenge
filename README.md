@@ -95,8 +95,7 @@ for mac install use this link below:
    https://docs.docker.com/desktop/install/mac-install/
 
 
-
-# Github repos that has been forked from the repo with all my codes.
+# Github repo that has been forked from the repo with all my codes.
     https://github.com/askossivi/devops-code-challenge
 
 

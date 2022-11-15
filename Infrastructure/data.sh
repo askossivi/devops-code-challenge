@@ -1,9 +1,5 @@
 #! /bin/bash
 sudo yum update -y
-# sudo yum install -y httpd
-# sudo service httpd start  
-# sudo systemctl enable httpd
-#echo "<h1>Welcome to Terraform -AWS - IaC Workshop! AWS Infra created using Terraform in us-east-2 Region</h1>" > /var/www/html/index.html
 sudo yum update -y
 sudo yum install -y docker
 sudo yum -y install docker 
@@ -24,10 +20,7 @@ docker run --name=backend-container -p 8080:8080 --network web-app -d devtrainin
 #Frontend:
 docker pull devtraining/client-frontend:v1.0.0
 docker run --name=frontend-container -p 3000:3000 --network web-app -d devtraining/client-frontend:v1.0.0
-
-# sudo chmod 666 /var/run/docker.sock
-# docker pull dhruvin30/dhsoniweb:v1
-# docker run -d -p 80:80 dhruvin30/dhsoniweb:latest  
+ 
 
 
 
