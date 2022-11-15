@@ -67,13 +67,10 @@ This is not an exhaustive list of extra features that could be added to this cod
 - AWS free tier account
 - A workstation with Terraform installed
 - An AWS access key & secret key created 
-- Generated SSH key on the Local workstation using "ssh-keygen"
+- SSH private and public key generated using "ssh-keygen"
 - A workstation with docker installed
 
-
-
-# The contairized frontend and backend was deployed in AWS using terraform.
-1- To start, you need to have an aws account, it is free to create one if you don't have any yet. Follow this link below to create one:
+1- To start, you will need to have an aws account. It is free to create one. Follow this link below to create one:
 
    https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 
@@ -102,7 +99,7 @@ for mac install use this link below:
 # Dockerize both fronend and backend 
 
 # Dockerize Backend
-To dockerize the backend, I created a Dockerfile with its different layers including nodejs base image in the the backend folder
+To dockerize the backend, create a Dockerfile with all the required layers starting starting nodejs base image.
 
 
     cd backend
@@ -123,7 +120,7 @@ Build and push the docker image tagged "devtraining/server-backend:v1.0.0" into 
 
 
 # Dockerize Frontend
- To dockerize the frondend, I created a Dockerfile with its different layers including nodejs base image in the the frontend folder, 
+ To dockerize the frontend, create a Dockerfile with all the required layers starting with nodejs base image. 
 
     cd frontend
     vi Dockerfile:
@@ -143,7 +140,9 @@ Build and pushed the docker image tagged "devtraining/client-frontend:v1.0.0" in
     docker build -t devtraining/client-frontend:v1.0.0 .
     docker push devtraining/client-frontend:v1.0.0
 
- There are two folders (State-backen/ and Infrastructure/) that contain terraform syntax.
+# Infrastructure as Code (IaC) WITH Terraform
+
+ There are two folders (State-backen/ and Infrastructure/) that contain the terraform synthax needed for this deployment
 
 # Creating the State Locking resources from the folder "State-backend/"
 This folder contains terraform syatax when run will create an s3 bucket, a DynamoDB table for state locking used later in the Infrastructure folder to maintain the terraform.tfstate file concistency, and a KMS alias used for the s3  bucket server side encryption_configuration.
