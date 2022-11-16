@@ -62,6 +62,7 @@ This is not an exhaustive list of extra features that could be added to this cod
 
 # SUBMISSION README.md file
 
+# Step 1: IaC Deployment
 
 #  Basic Prerequisite:
 - AWS free tier account
@@ -92,11 +93,44 @@ for mac install use this link below:
    https://docs.docker.com/desktop/install/mac-install/
 
 
-# Github repo that has been forked from the repo with all my codes.
+# Github repo that has been forked from the repo with all my codes. 
     https://github.com/askossivi/devops-code-challenge
 
+# Infrastructure as Code (IaC) WITH Terraform
 
-# Dockerize both fronend and backend 
+ There are two folders (State-backen/ and Infrastructure/) that contain the terraform synthax needed for this deployment
+
+# Creating the State Locking resources from the folder "State-backend/"
+This folder contains terraform synthax when run will create:
+1- an s3 bucket, 
+2- a DynamoDB table for state locking # used in the Infrastructure folder ('./infrastructure/terraform.tf#10 - #15') to maintain the terraform.tfstate file concistency, 
+3- KMS alias used for the s3  bucket server side encryption_configuration.
+
+To deploy this, run:
+
+    cd State-backend/
+    terraform init
+    terraform validate
+    terraform plan
+    terraform apply --auto-approve
+
+
+# Deploying the infrastruction from the folder "infrastruction/"
+Rinning this IaC systhax will deploy 17 resources in AWS including a free tier ec2 instance
+The README.md under infrastruction folder contains a list of resources deployed.
+
+    cd infrastruction
+    cat README.md
+    terraform init
+    terraform validate
+    terraform plan
+    terraform apply --auto-approve
+
+
+# Step 2: Dokerize both backend and frontend
+# Configuration
+Update both frontend and backend "API_URL" AND "CORS_ORIGIN" in their respective configuration file, (`frontend/src/config.js`, `backend/config.js` ) with the load balancer IP address
+
 
 # Dockerize Backend
 To dockerize the backend, create a Dockerfile with all the required layers starting starting nodejs base image.
@@ -140,31 +174,22 @@ Build and pushed the docker image tagged "devtraining/client-frontend:v1.0.0" in
     docker build -t devtraining/client-frontend:v1.0.0 .
     docker push devtraining/client-frontend:v1.0.0
 
-# Infrastructure as Code (IaC) WITH Terraform
 
- There are two folders (State-backen/ and Infrastructure/) that contain the terraform synthax needed for this deployment
+# Deploy the containers
+- Connect to the EC2 Instance:
+Login to AWS console and copy and paste the ssh-client login credentials
 
-# Creating the State Locking resources from the folder "State-backend/"
-This folder contains terraform syatax when run will create an s3 bucket, a DynamoDB table for state locking used later in the Infrastructure folder to maintain the terraform.tfstate file concistency, and a KMS alias used for the s3  bucket server side encryption_configuration.
-To deploy this, run:
-
-    cd State-backend/
-    terraform init
-    terraform validate
-    terraform plan
-    terraform apply --auto-approve
+    $ ssh -i "YOUR KEY PAIR" ec2-user@EC2-IP-ADDRESS        # From your local workstation terminal
+    $ docker ps
+   #Backend: Create the docker container by running below command
+    $ docker run --name=backend-container -p 8080:8080 --network web-app -d devtraining/server-backend:v1.0.0
+   #Frontend:
+    $ docker pull devtraining/client-frontend:v1.0.0
+    $ docker run --name=frontend-container -p 3000:3000 --network web-app -d devtraining/client-frontend:v1.0.0
 
 
-# Deploying the infrastruction from the folder "infrastruction/"
-Rinning this IaC systhax will deploy 17 resources in AWS including a free tier ec2 instance
-The README.md under infrastruction folder contains a list of resources deployed.
-
-    cd infrastruction
-    cat README.md
-    terraform init
-    terraform validate
-    terraform plan
-    terraform apply --auto-approve
+# Create a DNS Record - This step will required a domain hosted in AWS (Not free)
+Map the load balancer to a domain or subdomain of your choice. Use below link for documentation
 
 
 # Verify the deployed app
