@@ -130,7 +130,7 @@ The README.md, ('./infrastruction/README.md') contains a list of resources deplo
 
 # Step 2: Dokerize both backend and frontend
 # Configuration
-Update both frontend and backend "API_URL" AND "CORS_ORIGIN" in their respective configuration file, (`frontend/src/config.js`, `backend/config.js` ) with the load balancer IP address
+Update both frontend and backend "API_URL" AND "CORS_ORIGIN" in their respective configuration file, (`frontend/src/config.js`, `backend/config.js` ) with the host IP address or the load balancer IP address o
 
 
 # Dockerize Backend

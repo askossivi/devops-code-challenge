@@ -11,9 +11,3 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo chmod 666 /var/run/docker.sock
 #Network
 docker network create web-app
-
- 
-
-
-
-
