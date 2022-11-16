@@ -1,5 +1,6 @@
 # List of resources 
 Basic Prerequisite:
+
      a- AWS & Terraform
      b- a workstation with Terraform installed
      c- An AWS access key & secret key created 
