@@ -204,11 +204,6 @@ Copy and paste the url in the browser:
 - http://3.12.253.218:3000/
 - curl -i http://code-challenge.2-0-washington.com:3000/    # run this from your terminal
 
-2- Backend:
-- http://code-challenge.2-0-washington.com:8080/
-- http://3.12.253.218:8080/
-- curl -i http://code-challenge.2-0-washington.com:8080/    # run this from your terminal
-
 
 
 
