@@ -73,24 +73,24 @@ This is not an exhaustive list of extra features that could be added to this cod
 
 1- To start, you will need to have an aws account. It is free to create one. Follow this link below to create one:
 
-   https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
+   - https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/
 
 2- Install AWS CLI and Terraform on your local machine using the link below:
 
-   https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-   https://developer.hashicorp.com/terraform/downloads
+   - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+   - https://developer.hashicorp.com/terraform/downloads
 
 3- Generate and configure your AWS user profile credential:
 
-   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+   - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
 
 4- Install docker on your local workstation - Windows:
 
-   https://docs.docker.com/desktop/install/windows-install/
+   - https://docs.docker.com/desktop/install/windows-install/
 
 for mac install use this link below:
 
-   https://docs.docker.com/desktop/install/mac-install/
+   - https://docs.docker.com/desktop/install/mac-install/
 
 
 # Github repo that has been forked from the repo with all my codes. 
@@ -186,7 +186,6 @@ Login to AWS console and copy and paste the ssh-client login credentials
     # Create the docker container by running below command map with the bridge network 'web-app' created during the IaC deployment
 
     $ docker run --name=backend-container -p 8080:8080 --network web-app -d devtraining/server-backend:v1.0.0
-    #Frontend:
     $ docker run --name=frontend-container -p 3000:3000 --network web-app -d devtraining/client-frontend:v1.0.0
 
 
