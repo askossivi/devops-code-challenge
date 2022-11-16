@@ -130,7 +130,7 @@ The README.md, ('./infrastruction/README.md') contains a list of resources deplo
 
 # Step 2: Dokerize both backend and frontend
 # Configuration
-Update both frontend and backend "API_URL" AND "CORS_ORIGIN" in their respective configuration file, (`frontend/src/config.js`, `backend/config.js` ) with the host IP address or the load balancer IP address o
+Update both frontend and backend "API_URL" AND "CORS_ORIGIN" in their respective configuration file, (`frontend/src/config.js`, `backend/config.js` ) with the host elastic IP address
 
 
 # Dockerize Backend
@@ -200,12 +200,14 @@ Map the load balancer to a domain or subdomain of your choice. Use below link fo
 Copy and paste the url in the browser: 
 
 1- Frontend:
-- http://assignment.kossiviautomation.net:3000/  
-- curl -i http://assignment.kossiviautomation.net:3000/
+- http://code-challenge.2-0-washington.com:3000/  
+- http://3.12.253.218:3000/
+- curl -i http://code-challenge.2-0-washington.com:3000/    # run this from your terminal
 
 2- Backend:
-- http://assignment.kossiviautomation.net:8080/
-- curl -i http://assignment.kossiviautomation.net:8080/
+- http://code-challenge.2-0-washington.com:8080/
+- http://3.12.253.218:8080/
+- curl -i http://code-challenge.2-0-washington.com:8080/    # run this from your terminal
 
 
 

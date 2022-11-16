@@ -9,19 +9,17 @@ Basic Prerequisite:
 
 # NOTE
 Use your generated public and private key using ssh-keygen
-After terraform apply completes terraform will create theses resources.
+When you run terraform apply theses resources terraform will be creating.
 
-     1- VPC
-     2- Auto Scaling Group
-     3- Launch Configurationn
-     4- Auto Scaling Policy
-     5- Load Balancer
-     6- Internet Gateway
-     7- Route Table
-     8- Security Groups
-     9- Subnets (subnet)
-     10- Cloud Watch Alarm
-     11- EC2 Instance
+     an eip
+     an ec2 instance
+     key-pair
+     network-acl
+     security-group
+     a vpc
+     a subnet
+     an igw
+     a route table
 
 
 # install.sh is a bash script file used to bootrap the ec2 instance. This srcipt will bootrap the instance with:
