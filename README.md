@@ -102,9 +102,10 @@ for mac install use this link below:
 
 # Creating the State Locking resources from the folder "State-backend/"
 This folder contains terraform synthax when run will create:
-1- an s3 bucket, 
-2- a DynamoDB table for state locking # used in the Infrastructure folder ('./infrastructure/terraform.tf#10 - #15') to maintain the terraform.tfstate file concistency, 
-3- KMS alias used for the s3  bucket server side encryption_configuration.
+
+    1- an s3 bucket, 
+    2- a DynamoDB table for state locking # used in the Infrastructure folder ('./infrastructure/terraform.tf#10 - #15') to maintain the terraform.tfstate file concistency, 
+    3- KMS alias used for the s3  bucket server side encryption_configuration.
 
 To deploy this, run:
 
