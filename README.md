@@ -96,7 +96,7 @@ for mac install use this link below:
 # Github repo that has been forked from the repo with all my codes. 
     https://github.com/askossivi/devops-code-challenge
 
-# Infrastructure as Code (IaC) WITH Terraform
+# Infrastructure as Code (IaC) with Terraform
 
  There are two folders (State-backen/ and Infrastructure/) that contain the terraform synthax needed for this deployment
 
