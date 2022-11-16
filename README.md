@@ -116,8 +116,8 @@ To deploy this, run:
 
 
 # Deploying the infrastruction from the folder "infrastruction/"
-Rinning this IaC systhax will deploy 17 resources in AWS including a free tier ec2 instance
-The README.md under infrastruction folder contains a list of resources deployed.
+Rinning this IaC systhax will deploy 17 resources in AWS including a free tier ec2 instance, an elb, etc...
+The README.md, ('./infrastruction/README.md') contains a list of resources deployed.
 
     cd infrastruction
     cat README.md
@@ -176,21 +176,24 @@ Build and pushed the docker image tagged "devtraining/client-frontend:v1.0.0" in
 
 
 # Deploy the containers
-- Connect to the EC2 Instance:
+Connect to the deployed EC2 Instance:
 Login to AWS console and copy and paste the ssh-client login credentials
 
     $ ssh -i "YOUR KEY PAIR" ec2-user@EC2-IP-ADDRESS        # From your local workstation terminal
-    $ docker ps
-   #Backend: Create the docker container by running below command
+    $ docker ps -a    # Verify any running or created or exited container
+    $ docker images   # Verify if any docker images exit already locally 
+
+    # Create the docker container by running below command map with the bridge network 'web-app' created during the IaC deployment
+
     $ docker run --name=backend-container -p 8080:8080 --network web-app -d devtraining/server-backend:v1.0.0
-   #Frontend:
-    $ docker pull devtraining/client-frontend:v1.0.0
+    #Frontend:
     $ docker run --name=frontend-container -p 3000:3000 --network web-app -d devtraining/client-frontend:v1.0.0
 
 
 # Create a DNS Record - This step will required a domain hosted in AWS (Not free)
 Map the load balancer to a domain or subdomain of your choice. Use below link for documentation
 
+- https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html
 
 # Verify the deployed app
 
