@@ -5,37 +5,11 @@ b- a workstation with Terraform installed
 c- An AWS access key & secret key created 
 D- Generated SSH key on the Local workstation using "ssh-keygen"
 
-# I used different file for creasting all the resouces block to facilate sysnthax troubleshooting
-├───infrastructure
-│   │   asg_policy.tf
-│   │   asg.tf
-│   │   install.sh
-│   │   elb.tf
-│   │   igw.tf
-│   │   key-pair.tf
-│   │   launch_config.tf
-│   │   outputs.tf
-│   │   provider.tf
-│   │   README.md
-│   │   route_table.tf
-│   │   sg_ec2.tf
-│   │   sg_elb.tf
-│   │   subnets.tf
-│   │   terraform.tf
-│   │   vars.tf
-│   │   vpc.tf
-│   │
-│   └───private-key
-│           terraform-key
-│           terraform.pub
-│          
-│
 
 # NOTE
 Use your generated public and private key using ssh-keygen
-
-
 After terraform apply completes terraform will create theses resources.
+
 1- VPC
 2- Auto Scaling Group
 3- Launch Configurationn
@@ -49,7 +23,7 @@ After terraform apply completes terraform will create theses resources.
 11- EC2 Instance
 
 
-- install.sh is a bash script file used to bootrap the ec2 instance. This srcipt will bootrap the instance with:
+install.sh is a bash script file used to bootrap the ec2 instance. This srcipt will bootrap the instance with:
 
 1- run yum update 
 2- install docker

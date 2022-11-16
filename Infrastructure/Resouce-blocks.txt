@@ -1,0 +1,25 @@
+# Resouce blocks files to facilate sysnthax troubleshooting
+├───infrastructure
+│   │   asg_policy.tf
+│   │   asg.tf
+│   │   install.sh
+│   │   elb.tf
+│   │   igw.tf
+│   │   key-pair.tf
+│   │   launch_config.tf
+│   │   outputs.tf
+│   │   provider.tf
+│   │   README.md
+│   │   route_table.tf
+│   │   sg_ec2.tf
+│   │   sg_elb.tf
+│   │   subnets.tf
+│   │   terraform.tf
+│   │   vars.tf
+│   │   vpc.tf
+│   │
+│   └───private-key
+│           terraform-key
+│           terraform.pub
+│          
+│
